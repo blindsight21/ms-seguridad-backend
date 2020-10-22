@@ -77,6 +77,7 @@ public class DataSourceSeguridadConfig {
         return basicDataSource;
     }
 
+    @Primary
     @Bean(name = "seguridadEntityManagerFactory")
     public LocalContainerEntityManagerFactoryBean productEntityManager(EntityManagerFactoryBuilder builder,
             @Qualifier("seguridadDatasource") DataSource dataSource) {
