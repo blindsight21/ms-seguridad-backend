@@ -85,12 +85,13 @@ public class DataSourceSeguridadConfig {
 //		properties.put("hibernate.hbm2ddl.auto", "update");
 //		properties.put("hibernate.dialect", "org.hibernate.dialect.MYSQL5Dialect");
         return builder.dataSource(dataSource).packages("pe.gob.mimp.seguridad.model").persistenceUnit("seguridad")
-                .properties(initJpaProperties()).jta(true).build();
+                .properties(initJpaProperties()).build();
 
     }
 
     @Bean(name = "seguridadTransactionManager")
-    @ConditionalOnMissingBean(PlatformTransactionManager.class)
+    //@ConditionalOnMissingBean(PlatformTransactionManager.class)
+    @Primary
     public PlatformTransactionManager productTransactionManager(
             @Qualifier("seguridadEntityManagerFactory") EntityManagerFactory seguridadEntityManagerFactory) {
 
